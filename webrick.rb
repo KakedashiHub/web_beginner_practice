@@ -7,6 +7,10 @@ server = WEBrick::HTTPServer.new({
   :Port => 8000
 })
 
+trap(:INT){
+    server.shutdown
+}
+
 server.mount_proc("/time") do |req, res|
   # レスポンス内容を出力
   body = "<html><body>\n"

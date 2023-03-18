@@ -7,4 +7,8 @@ server = WEBrick::HTTPServer.new({
   :Port => 8000
 })
 
+trap(:INT){
+    server.shutdown
+}
+
 server.start

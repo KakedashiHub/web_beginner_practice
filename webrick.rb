@@ -1,5 +1,6 @@
  # webrick.rb
 require 'webrick'
+require "erb"
 
 server = WEBrick::HTTPServer.new({ 
   :DocumentRoot => './',
@@ -43,6 +44,15 @@ server.mount_proc("/form_post") do |req, res|
   res.status = 200
   res['Content-Type'] = 'text/html'
   res.body = body
+end
+
+WEBrick::HTTPServlet::FileHandler.add_handler("erb", WEBrick::HTTPServlet::ERBHandler)
+server.config[:MimeTypes]["erb"] = "text/html"
+
+server.mount_proc("/hello") do |req, res|
+  template = ERB.new( File.read('hello.erb') )
+  @now = Time.new
+  res.body << template.result( binding )
 end
 
 server.start

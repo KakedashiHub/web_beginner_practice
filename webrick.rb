@@ -55,4 +55,26 @@ server.mount_proc("/hello") do |req, res|
   res.body << template.result( binding )
 end
 
+foods = [
+  { id: 1, name: "りんご", category: "fruits" },
+  { id: 2, name: "バナナ", category: "fruits" },
+  { id: 3, name: "いちご", category: "fruits" },
+  { id: 4, name: "トマト", category: "vegetables" },
+  { id: 5, name: "キャベツ", category: "vegetables" },
+  { id: 6, name: "レタス", category: "vegetables" },
+]
+
+server.mount_proc("/foods") do |req, res|
+  template = ERB.new( File.read('./foods/index.erb') )
+  @selected_category = req.query["category"]
+  @foods = if @selected_category.nil?
+             foods
+           elsif @selected_category == "all"
+             foods
+           else
+             foods.select {|food| food[:category] == @selected_category }
+           end
+  res.body << template.result( binding )
+end
+
 server.start

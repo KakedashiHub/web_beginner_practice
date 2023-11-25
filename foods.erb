@@ -11,9 +11,9 @@
         <form action="/foods" method="get">
             <!-- <label for="category">カテゴリ</label> -->
             <select name="category">
-                <option value="all">全て</option>
-                <option value="fruits">フルーツ</option>
-                <option value="vegetables">野菜</option>
+                <option value="all" <%= 'selected' if req.query['category'] == 'all' %>>全て</option>
+                <option value="fruits" <%= 'selected' if req.query['category'] == 'fruits' %>>フルーツ</option>
+                <option value="vegetables" <%= 'selected' if req.query['category'] == 'vegetables' %>>野菜</option>
             </select>
             <button type="submit">検索</button>
         </form>

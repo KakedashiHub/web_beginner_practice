@@ -1,0 +1,20 @@
+<html>
+  <head><meta charset='utf-8'></head>
+  <body>
+    <h1>Foods一覧</h1>
+    <form action="/foods">
+      <select name="category">
+        <option value="all" <%= @categories == "all" ? "selected" : "" %>>全て</option>
+        <option value="fruits" <%= @categories == "fruits" ? "selected" : "" %>>フルーツ</option>
+        <option value="vegetables" <%= @categories == "vegetables" ? "selected" : "" %>>野菜</option>
+      </select>
+      <button type="search">検索</button>
+    </form>
+
+    <ul>
+      <% @foods.each do |food| %>
+        <li><%= food[:name] %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

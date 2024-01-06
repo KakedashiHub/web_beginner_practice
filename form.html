@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="http://localhost:8000/form_get" method="get">
+      <ul style="list-style-type: none;">
+        <li>
+          GETで送る
+        </li>
+        <li>
+          <label for="username_get">ユーザー名</label>
+          <input type="text" id="username_get" name="username">
+        </li>
+        <li>
+          <label for="age_get">年齢</label>
+          <input type="text" id="age_get" name="age">
+        </li>
+        <li>
+          <input type="submit" value="GETで送信">
+        </li>
+      </ul>
+    </form>
+
+    <form action="http://localhost:8000/form_post" method="post">
+      <ul style="list-style-type: none;">
+        <li>
+          POSTで送る
+        </li>
+        <li>
+          <label for="username_post">ユーザー名</label>
+          <input type="text" id="username_post" name="username">
+        </li>
+        <li>
+          <label for="age_post">年齢</label>
+          <input type="text" id="age_post" name="age">
+        </li>
+        <li>
+          <input type="submit" value="POSTで送信">
+        </li>
+      </ul>
+    </form>
+  </body>
+</html>

@@ -24,12 +24,13 @@
    template = ERB.new( File.read('./foods/index.erb') )
    
    # ここにロジックを書く
-   @foods = foods
-   selected_category = req.query['category']
- 
-   if selected_category != "all"
-       @foods = foods.select { |f| f[:category] == selected_category  }
-   end
+   @selected_category = req.query['category']
+
+   @foods = if @selected_category != "all"
+              foods.select { |f| f[:category] == @selected_category }
+            else
+              foods
+            end
  
    res.body << template.result( binding )
  end

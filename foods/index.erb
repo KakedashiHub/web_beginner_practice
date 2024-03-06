@@ -7,23 +7,9 @@
     <h1>Foods一覧</h1>
     <form action="/foods" method="get">
       <select name="category">
-        <% if @selected_category == nil %>
-          <option value="all">全て</option>
-          <option value="fruits">フルーツ</option>
-          <option value="vegetables">野菜</option>
-        <% elsif @selected_category == "all" %>
-          <option value="all" selected>全て</option>
-          <option value="fruits">フルーツ</option>
-          <option value="vegetables">野菜</option>
-        <% elsif @selected_category == "fruits" %>
-          <option value="all">全て</option>
-          <option value="fruits" selected>フルーツ</option>
-          <option value="vegetables">野菜</option>
-        <% elsif @selected_category == "vegetables" %>
-          <option value="all">全て</option>
-          <option value="fruits">フルーツ</option>
-          <option value="vegetables" selected>野菜</option>
-        <% end %>
+          <option value="all" <%= @selected_category == "all" ? "selected" : "" %>>全て</option>
+          <option value="fruits" <%= @selected_category == "fruits" ? "selected" : "" %>>フルーツ</option>
+          <option value="vegetables" <%= @selected_category == "vegetables" ? "selected" : "" %>>野菜</option>
       </select>
       <input type="submit" value="検索">
     </form>
